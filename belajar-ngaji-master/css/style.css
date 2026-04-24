@@ -1,0 +1,982 @@
+/* Custom Stylesheet */
+
+/* FONT QURAN */
+@font-face {
+  font-family: "mequran";
+  src: url('../me_quran.ttf');
+  font-weight: normal;
+}
+
+/* RESET */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* NAV */
+nav ul a,
+nav .brand-logo {
+  color: #FDF4EB;
+  font-family: 'Righteous', cursive;
+}
+
+/* IMAGE */
+.responsive-img {
+  width: 100%; /* FIX dari 900 */
+  max-width: 900px;
+  height: auto;
+}
+
+/* AYAT */
+.ayat {
+  font-family: 'Righteous', cursive;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+/* TEXT */
+p {
+  line-height: 2rem;
+  color: #FDF4EB;
+}
+
+/* HURUF */
+.huruf {
+  color: #E9C46A;
+}
+
+/* NAV MOBILE */
+.sidenav-trigger {
+  color: #d8d8d8;
+}
+
+/* BANNER */
+.parallax-container {
+  min-height: 380px;
+  height: auto;
+  line-height: 0;
+  color: #d68925;
+  display: flex;
+  align-items: center;
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+
+  #index-banner .section {
+    top: 15%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 5%;
+  }
+
+  .ayat {
+    font-size: 16px;
+  }
+}
+
+/* ICON */
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+  color: #E76F51;
+}
+
+/* FOOTER */
+footer.page-footer {
+  margin: 0;
+}
+
+/* HEADER QURAN */
+.header-quran {
+  width: 100%;
+  height: 3em;
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.header-quran .judul {
+  margin-top: 0.5em;
+  margin-left: 2.5em;
+  flex-basis: 50%;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.header-quran .ikon {
+  text-align: right;
+  flex-basis: 50%;
+}
+
+.header-quran i {
+  margin-top: 0.8em;
+  margin-right: 1em;
+}
+
+/* NOMOR SURAH */
+.no_s {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  text-align: center;
+  line-height: 2.3em;
+}
+
+/* TABLE */
+.td1 {
+  padding: 0;
+}
+
+.td2 {
+  line-height: 2.5em;
+}
+
+/* TEXT STYLE */
+.tebal {
+  font-weight: 500;
+}
+
+/* LIST SURAH */
+.list-item {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  transition: 0.3s;
+}
+
+.list-item:hover {
+  background: #f5f5f5;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* ICON SURAH */
+.item-icon {
+  flex-basis: 15%;
+  text-align: center;
+}
+
+.item-icon .no-ayat,
+.item-icon i {
+  margin-top: 1.2em;
+}
+
+/* TEKS SURAH */
+.item-teks {
+  flex-basis: 75%;
+}
+
+/* ARAB */
+.teks-arab {
+  font-family: 'mequran';
+  text-align: right;
+  margin-top: 1em;
+  font-size: 1.8em;
+  line-height: 2em;
+  margin-bottom: 1em;
+}
+
+/* NOMOR AYAT */
+.no-ayat {
+  width: 2em;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 0.5em;
+}
+/* ===== FIX LAYOUT BERANTAKAN ===== */
+
+/* Biar banner ga nutup konten */
+.parallax-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Biar konten di bawah naik ke depan */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Jarak antar section */
+.section {
+  padding: 60px 0;
+}
+
+/* Logo / gambar tengah biar ga kegedean */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Judul biar ga terlalu besar */
+h1.header {
+  font-size: 3rem;
+}
+
+/* Perbaiki posisi tulisan banner */
+#index-banner .section {
+  position: relative !important;
+  top: 0 !important;
+}
+
+/* Tambahin jarak setelah banner */
+#index-banner {
+  margin-bottom: 40px;
+}
+
+/* Overlay biar teks kebaca */
+.parallax::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  top: 0;
+  left: 0;
+}
+
+/* =========================
+   REDESIGN MODERN UI
+   ========================= */
+
+/* Background utama */
+body {
+  background: #5d9450;
+}
+
+/* NAVBAR */
+nav {
+  background: #2A9D8F !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+nav .brand-logo img {
+  height: 60px;
+  margin-top: 5px; /* biar pas tengah */
+}
+
+/* BANNER */
+.parallax-container {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+
+.parallax::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+}
+
+/* JUDUL */
+h1.header {
+  font-size: 3.2rem;
+  font-weight: bold;
+  color: #F4A261;
+  letter-spacing: 1px;
+}
+
+h5 {
+  color: #fff;
+}
+
+/* BUTTON */
+.btn {
+  background: #135704 !important;
+  border-radius: 30px;
+  padding: 0 25px;
+}
+
+.btn:hover {
+  background: #21867a !important;
+}
+
+/* MENU BUTTON */
+.container.center .btn {
+  margin: 10px;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 0;
+}
+
+/* CARD SERVICE */
+.icon-block {
+  background: #ffffff;
+  color: #333;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  padding: 25px;
+  transition: 0.3s;
+}
+
+.icon-block:hover {
+  transform: translateY(-5px);
+  background: #346a75;
+}
+
+/* ICON */
+.icon-block i {
+  font-size: 40px !important;
+}
+
+/* TEXT */
+.icon-block h5 {
+  color: #F4A261;
+  font-weight: bold;
+}
+
+.icon-block p {
+  color: #ddd;
+}
+
+/* ABOUT */
+#about {
+  background: #6BAA75;
+  color: white;
+  border-radius: 25px;
+  padding: 60px 40px;
+  margin-top: 60px;
+  margin-bottom: 80px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  text-align: center;
+}
+#about h4 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#about p {
+  color: #f1f1f1;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.page-footer {
+  margin-top: 50px;
+}
+#about:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+#about p {
+  color: #fff;
+}
+
+/* FOOTER */
+.page-footer {
+  background: #2A9D8F !important;
+}
+
+.footer-copyright {
+  background: #21867a !important;
+}
+
+/* ICON SOSIAL */
+.icon-sosial a {
+  margin: 0 6px;
+  transition: 0.3s;
+}
+
+.icon-sosial a:hover {
+  transform: scale(1.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  h1.header {
+    font-size: 2.2rem;
+  }
+
+  .icon-block {
+    margin-bottom: 20px;
+  }
+}
+
+/* ===== FINAL FIX (OVERRIDE SEMUA YANG TABRAKAN) ===== */
+
+/* Banner fix */
+.parallax-container {
+  position: relative;
+  z-index: 1;
+  min-height: 400px;
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+}
+
+/* Overlay final */
+.parallax::after {
+  background: rgba(0,0,0,0.4) !important;
+}
+
+/* Section biar stabil */
+.section {
+  padding: 70px 0 !important;
+}
+
+/* Judul fix */
+h1.header {
+  font-size: 3rem !important;
+  text-align: center;
+}
+
+/* Biar konten ga ketiban */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Fix tulisan banner */
+#index-banner .section {
+  position: relative !important;
+  top: 0 !important;
+}
+
+/* Jarak setelah banner */
+#index-banner {
+  margin-bottom: 50px;
+}
+
+/* Icon block biar rapi */
+.icon-block {
+  margin-top: 20px;
+}
+
+/* Fix biar ga numpuk */
+.row {
+  margin-bottom: 30px;
+}
+nav {
+  background: #21867a !important;
+}
+.nav-btn {
+  background: #135704;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 25px;
+  margin-left: 10px;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+/* Hover effect */
+.nav-btn:hover {
+  background: #135704;
+  transform: scale(1.05);
+}
+/* NAV WRAPPER FIX */
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* MENU NAV */
+nav ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+/* BUTTON NAV */
+.nav-btn {
+  background: #135704;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 25px;
+  margin-left: 10px;
+  transition: 0.3s;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* HOVER */
+.nav-btn:hover {
+  background: #135704;
+}
+
+/* FIX BIAR GA NGE-STRETCH */
+nav .container {
+  max-width: 1100px;
+}
+nav {
+  padding: 0 20px;
+}
+nav .nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* dorong menu ke kanan dengan rapi */
+nav ul.right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* fix posisi tombol */
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #135704;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 25px;
+  margin-left: 10px;
+  height: 36px;
+}
+
+/* hover */
+.nav-btn:hover {
+  background: #135704;
+}
+.icon-block h5 {
+  color: #2f5d50;
+  font-weight: bold;
+}
+
+.icon-block p {
+  color: #666;
+}
+
+.icon-block i {
+  color: #5d9450;
+  font-size: 40px;
+}
+/* Saat diklik */
+.icon-block:active {
+  background: #21867a !important;
+}
+
+/* Saat fokus (abis diklik) */
+.icon-block:focus {
+  background: #21867a !important;
+}
+
+/* Tambahan biar smooth */
+.icon-block {
+  transition: 0.2s;
+}
+/* Override semua efek klik */
+.icon-block:hover,
+.icon-block:active,
+.icon-block:focus {
+  background: #21867a !important;
+}
+/* Footer utama */
+.page-footer {
+  padding-top: 10px !important;
+  padding-bottom: 0 !important;
+  min-height: auto !important;
+}
+
+/* Bagian copyright */
+.footer-copyright {
+  padding: 10px 0 !important;
+  font-size: 14px;
+}
+.page-footer {
+  background: #5d9450 !important;
+}
+
+.footer-copyright {
+  background: #5d9450 !important;
+}
+.footer-copyright a {
+  color: #e8f5e9 !important;
+  text-decoration: none;
+}
+.footer-copyright,
+.footer-copyright a {
+  color: #ffffff !important;
+}
+.footer-copyright * {
+  color: #ffffff !important;
+}
+/* BACKGROUND HALAMAN */
+body {
+  background: #F4F8F3;
+}
+
+/* CARD HURUF (INI INTI) */
+.alif {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HURUF ARAB */
+.huruf {
+  color: #5d9450;
+}
+
+/* TEKS LATIN */
+.huruf label {
+  font-size: 14px;
+  color: #666;
+}
+
+/* HOVER */
+.alif:hover {
+  transform: translateY(-5px);
+  background: #E8F5E9;
+}
+
+/* KLIK */
+.alif:active {
+  transform: scale(0.95);
+  background: #21867a;
+}
+
+/* BIAR ARAB IKUT PUTIH PAS DIKLIK */
+.alif:active .huruf {
+  color: white;
+}
+
+/* LABEL IKUT PUTIH */
+.alif:active label {
+  color: white;
+}
+body {
+  background: #5d9450;
+}
+/* CARD */
+.alif {
+  width: 140px;
+  height: 140px;
+  background: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER */
+.alif:hover {
+  transform: translateY(-5px);
+  background: #E8F5E9;
+}
+
+/* KLIK */
+.alif:active {
+  background: #21867a;
+  transform: scale(0.95);
+}
+
+/* WARNA TEKS */
+.alif:active .huruf,
+.alif:active label {
+  color: white;
+}
+/* ===== HIJAIYAH CLEAN FINAL ===== */
+
+body.page-hijaiyah {
+  background: #5d9450;
+}
+
+.page-hijaiyah .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.page-hijaiyah .alif {
+  width: 140px;
+  height: 140px;
+  background: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.page-hijaiyah .alif:hover {
+  transform: translateY(-5px);
+  background: #E8F5E9;
+}
+
+.page-hijaiyah .alif:active {
+  background: #21867a;
+}
+
+.page-hijaiyah .alif:active .huruf,
+.page-hijaiyah .alif:active label {
+  color: white;
+}
+.page-hijaiyah nav {
+  background: #2A9D8F !important;
+}
+.tagline {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+
+  transition: 0.3s;
+}
+
+.tagline:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.25);
+}
+/* ===================== */
+/* HALAMAN AL-QURAN ONLY */
+/* ===================== */
+
+.page-quran {
+  background: #5d9450; /* hijau adem */
+}
+
+/* container list */
+.page-quran .ayat {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+/* card per surah */
+.page-quran .ayat li {
+  background: #f8f9f7;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 0.3s;
+}
+
+/* hover efek */
+.page-quran .ayat li:hover {
+  transform: translateY(-3px);
+  background: #e6f0e6;
+}
+
+/* nomor + nama */
+.page-quran .ayat li b {
+  color: #2d5a27;
+  font-size: 16px;
+}
+
+/* arti & jumlah ayat */
+.page-quran .ayat li span {
+  color: #6c757d;
+  font-size: 13px;
+}
+.page-quran .ayat li::before {
+  content: "📖";
+  margin-right: 10px;
+}
+.page-quran .footer-copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.page-quran .footer-copyright .container {
+  text-align: center;
+}
+.page-quran .footer-copyright .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: white;
+}
+.page-quran .footer-copyright .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* jarak icon & teks */
+  color: white;
+}
+
+/* paksa teks ga turun */
+.page-quran .footer-copyright span {
+  white-space: nowrap;
+}
+.page-quran .footer-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: white;
+}
+
+/* ICON LOVE */
+.page-quran .love-icon {
+  width: 16px;
+  height: 16px;
+  fill: red; /* INI PENTING BIAR KELIATAN */
+  display: block;
+}
+/* SUBTITLE QURAN */
+.page-quran .subtitle-quran {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.15); /* transparan */
+  backdrop-filter: blur(6px); /* efek kaca */
+
+  color: white;
+  font-size: 16px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.page-quran .subtitle-quran {
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* NAVBAR KHUSUS HALAMAN QURAN */
+.page-quran nav {
+  background: #21867a!important;
+  box-shadow: none;
+}
+
+/* biar full tanpa batas container keliatan */
+.page-quran .nav-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* logo lebih besar dikit */
+.page-quran .brand-logo img {
+  height: 60px;
+  margin-top: 5px;
+}
+/* NAVBAR HALAMAN SURAH */
+.page-surah nav {
+  background: #21867a !important;
+  box-shadow: none;
+}
+
+/* logo tengah */
+.page-surah .brand-logo img {
+  height: 60px;
+  margin-top: 5px;
+}
+
+/* tombol back */
+.page-surah .sidenav-trigger i {
+  color: white;
+  font-size: 28px;
+}
+
+/* rapihin posisi */
+.page-surah .nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* tombol back tetap di kanan */
+.page-surah .sidenav-trigger {
+  position: absolute;
+  right: 15px;
+}
+/* SUBTITLE HALAMAN SURAH */
+.page-surah .subtitle-surah {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 30px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+
+  color: white;
+  font-size: 15px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+/* HILANGIN PUTIH SAAT DIKLIK */
+.page-surah #list-ayah li:active,
+.page-surah #list-ayah li:focus {
+  background: rgba(255,255,255,0.08) !important;
+  outline: none;
+}
+.page-surah #list-ayah li {
+  transition: 0.3s;
+}
+
+/* hover */
+.page-surah #list-ayah li:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* klik */
+.page-surah #list-ayah li:active {
+  transform: scale(0.98);
+  background: rgba(255,255,255,0.08);
+}
+/* FOOTER SURAH */
+.page-surah .footer-copyright {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  padding: 15px 0;
+}
