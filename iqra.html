@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Iqra Interaktif</title>
+
+  <link rel="shortcut icon" href="./img/logo-anak.png">
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="css/materialize.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* CARD LEVEL */
+    .iqra-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .iqra-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .iqra-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .iqra-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-right: 15px;
+    }
+
+    /* GRID LATIHAN */
+    #list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .iqra-item {
+  font-size: 48px;
+  padding: 25px 10px;
+  background: #f5f5f5; /* putih elegan */
+  color: #d4a94f; /* warna emas huruf */
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.iqra-item:hover {
+  transform: scale(1.05);
+  background: #ffffff;
+}
+
+/* saat dimainkan */
+.playing {
+  background: linear-gradient(145deg, #4CAF50, #2e7d32) !important;
+  color: white !important;
+}
+
+.banner-text {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.2); /* transparan putih */
+  backdrop-filter: blur(10px); /* efek blur kaca */
+  -webkit-backdrop-filter: blur(10px);
+
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-wrapper container">
+    <a href="index.html" class="brand-logo">
+      <img src="./img/logo-anak.png" style="height:50px;">
+    </a>
+  </div>
+</nav>
+
+<!-- BANNER -->
+<div class="parallax-container">
+  <div class="container center">
+    <br><br>
+    <h2>Iqra Interaktif</h2>
+    <p class="banner-text">Belajar membaca dari dasar</p>
+    <br><br>
+  </div>
+  <div class="parallax">
+    <img src="./img/banner.png">
+  </div>
+</div>
+
+<!-- MENU -->
+<div class="container" id="menu">
+  <h4 class="center">Pilih Level Iqra</h4>
+
+  <div class="iqra-card" onclick="openLevel(1)">
+    <div class="iqra-left">
+      <div class="iqra-icon" style="background:#4CAF50;">1</div>
+      <div>
+        <b>Iqra 1</b><br><small>Huruf Tunggal</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="iqra-card" onclick="openLevel(2)">
+    <div class="iqra-left">
+      <div class="iqra-icon" style="background:#03A9F4;">2</div>
+      <div><b>Iqra 2</b><br><small>Gabungan 2 Huruf</small></div>
+    </div>
+  </div>
+
+  <div class="iqra-card" onclick="openLevel(3)">
+    <div class="iqra-left">
+      <div class="iqra-icon" style="background:#FFC107;">3</div>
+      <div><b>Iqra 3</b><br><small>Pengulangan</small></div>
+    </div>
+  </div>
+
+  <div class="iqra-card" onclick="openLevel(4)">
+    <div class="iqra-left">
+      <div class="iqra-icon" style="background:#9C27B0;">4</div>
+      <div><b>Iqra 4</b><br><small>3 Huruf</small></div>
+    </div>
+  </div>
+
+  <div class="iqra-card" onclick="openLevel(5)">
+    <div class="iqra-left">
+      <div class="iqra-icon" style="background:#FF9800;">5</div>
+      <div><b>Iqra 5</b><br><small>Variasi</small></div>
+    </div>
+  </div>
+
+  <div class="iqra-card" onclick="openLevel(6)">
+    <div class="iqra-left">
+      <div class="iqra-icon" style="background:#E91E63;">6</div>
+      <div><b>Iqra 6</b><br><small>Lanjutan</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- LATIHAN -->
+<div class="container center" id="latihan" style="display:none;">
+  <a class="btn" onclick="backMenu()">⬅ Kembali</a>
+  <div id="list"></div>
+</div>
+
+<audio id="audio"></audio>
+
+<script>
+const audio = document.getElementById("audio");
+
+function playSequence(list, el) {
+  let i = 0;
+  el.classList.add("playing");
+
+  function next() {
+    if (i >= list.length) {
+      el.classList.remove("playing");
+      return;
+    }
+
+    audio.src = "audio/hijaiyah/" + list[i];
+    audio.play();
+
+    audio.onended = () => {
+      i++;
+      next();
+    };
+  }
+
+  next();
+}
+
+const levels = {
+  1: [
+     {text:"ا", sounds:["alif.mp3"]},
+     {text:"ب", sounds:["ba.mp3"]},
+  {text:"ت", sounds:["ta.mp3"]},
+  {text:"ث", sounds:["tsa.mp3"]},
+  {text:"ج", sounds:["jim.mp3"]},
+  {text:"ح", sounds:["ha.mp3"]},
+  {text:"خ", sounds:["kho.mp3"]},
+  {text:"د", sounds:["dal.mp3"]},
+  {text:"ذ", sounds:["dza.mp3"]},
+  {text:"ر", sounds:["ro.mp3"]},
+  {text:"ز", sounds:["zay.mp3"]},
+  {text:"س", sounds:["sin.mp3"]},
+  {text:"ش", sounds:["syin.mp3"]},
+  {text:"ص", sounds:["shod.mp3"]},
+  {text:"ض", sounds:["dhod.mp3"]},
+  {text:"ط", sounds:["tho.mp3"]},
+  {text:"ظ", sounds:["dhzo.mp3"]},
+  {text:"ع", sounds:["ain.mp3"]},
+  {text:"غ", sounds:["ghoin.mp3"]},
+  {text:"ف", sounds:["fa.mp3"]},
+  {text:"ق", sounds:["qof.mp3"]},
+  {text:"ك", sounds:["kaf.mp3"]},
+  {text:"ل", sounds:["lam.mp3"]},
+  {text:"م", sounds:["mim.mp3"]},
+  {text:"ن", sounds:["nun.mp3"]},
+  {text:"و", sounds:["waw.mp3"]},
+  {text:"ه", sounds:["ha.mp3"]},
+  {text:"ء", sounds:["hamzah.mp3"]},
+  {text:"ي", sounds:["ya.mp3"]}
+  ],
+
+  2: [
+    {text:"ا ب",sounds:["alif.mp3","ba.mp3"]},
+    {text:"ب ت",sounds:["ba.mp3","ta.mp3"]},
+    {text:"ت ث",sounds:["ta.mp3","tsa.mp3"]},
+    {text:"ث ج",sounds:["tsa.mp3","jim.mp3"]},
+    {text:"ج ح",sounds:["jim.mp3","ha.mp3"]},
+    {text:"ح خ",sounds:["ha.mp3","kho.mp3"]},
+    {text:"خ د",sounds:["kho.mp3","dal.mp3"]},
+    {text:"د ذ",sounds:["dal.mp3","dza.mp3"]},
+    {text:"ذ ر",sounds:["dza.mp3","ro.mp3"]},
+    {text:"ر ز",sounds:["ro.mp3","zay.mp3"]}
+  ],
+
+  3: [
+    {text:"ا ا ا",sounds:["alif.mp3","alif.mp3","alif.mp3"]},
+    {text:"ب ب ب",sounds:["ba.mp3","ba.mp3","ba.mp3"]},
+    {text:"ت ت ت",sounds:["ta.mp3","ta.mp3","ta.mp3"]},
+    {text:"ث ث ث",sounds:["tsa.mp3","tsa.mp3","tsa.mp3"]},
+    {text:"ج ج ج",sounds:["jim.mp3","jim.mp3","jim.mp3"]},
+    {text:"ح ح ح",sounds:["ha.mp3","ha.mp3","ha.mp3"]},
+    {text:"خ خ خ",sounds:["kho.mp3","kho.mp3","kho.mp3"]},
+    {text:"د د د",sounds:["dal.mp3","dal.mp3","dal.mp3"]},
+    {text:"ر ر ر",sounds:["ro.mp3","ro.mp3","ro.mp3"]},
+    {text:"س س س",sounds:["sin.mp3","sin.mp3","sin.mp3"]}
+  ],
+
+  4: [
+    {text:"ا ب ت",sounds:["alif.mp3","ba.mp3","ta.mp3"]},
+    {text:"ب ت ث",sounds:["ba.mp3","ta.mp3","tsa.mp3"]},
+    {text:"ت ث ج",sounds:["ta.mp3","tsa.mp3","jim.mp3"]},
+    {text:"ث ج ح",sounds:["tsa.mp3","jim.mp3","ha.mp3"]},
+    {text:"ج ح خ",sounds:["jim.mp3","ha.mp3","kho.mp3"]},
+    {text:"ح خ د",sounds:["ha.mp3","kho.mp3","dal.mp3"]},
+    {text:"خ د ذ",sounds:["kho.mp3","dal.mp3","dza.mp3"]},
+    {text:"د ذ ر",sounds:["dal.mp3","dza.mp3","ro.mp3"]},
+    {text:"ذ ر ز",sounds:["dza.mp3","ro.mp3","zay.mp3"]},
+    {text:"ر ز س",sounds:["ro.mp3","zay.mp3","sin.mp3"]}
+  ],
+
+  5: [
+    {text:"ب ا ت",sounds:["ba.mp3","alif.mp3","ta.mp3"]},
+    {text:"ت ب ا",sounds:["ta.mp3","ba.mp3","alif.mp3"]},
+    {text:"ج ث ب",sounds:["jim.mp3","tsa.mp3","ba.mp3"]},
+    {text:"خ ح ج",sounds:["kho.mp3","ha.mp3","jim.mp3"]},
+    {text:"ذ د خ",sounds:["dza.mp3","dal.mp3","kho.mp3"]},
+    {text:"ر ذ د",sounds:["ro.mp3","dza.mp3","dal.mp3"]},
+    {text:"س ز ر",sounds:["sin.mp3","zay.mp3","ro.mp3"]},
+    {text:"ش س ز",sounds:["syin.mp3","sin.mp3","zay.mp3"]},
+    {text:"ن م ل",sounds:["nun.mp3","mim.mp3","lam.mp3"]},
+    {text:"ك ق ف",sounds:["kaf.mp3","qof.mp3","fa.mp3"]}
+  ],
+
+  6: [
+    {text:"ا ب ت ث",sounds:["alif.mp3","ba.mp3","ta.mp3","tsa.mp3"]},
+    {text:"ج ح خ د",sounds:["jim.mp3","ha.mp3","kho.mp3","dal.mp3"]},
+    {text:"ذ ر ز س",sounds:["dza.mp3","ro.mp3","zay.mp3","sin.mp3"]},
+    {text:"ش ص ض ط",sounds:["syin.mp3","shod.mp3","dhod.mp3","tho.mp3"]},
+    {text:"ظ ع غ ف",sounds:["dho.mp3","ain.mp3","ghoin.mp3","fa.mp3"]},
+    {text:"ق ك ل م",sounds:["qof.mp3","kaf.mp3","lam.mp3","mim.mp3"]},
+    {text:"ن و ي",sounds:["nun.mp3","waw.mp3","ya.mp3"]},
+    {text:"ب ت ث ج",sounds:["ba.mp3","ta.mp3","tsa.mp3","jim.mp3"]},
+    {text:"ح خ د ذ",sounds:["ha.mp3","kho.mp3","dal.mp3","dza.mp3"]},
+    {text:"ر ز س ش",sounds:["ro.mp3","zay.mp3","sin.mp3","syin.mp3"]}
+  ]
+};
+
+function openLevel(level) {
+  menu.style.display = "none";
+  latihan.style.display = "block";
+
+  list.innerHTML = "";
+
+  levels[level].forEach(item => {
+    let div = document.createElement("div");
+    div.className = "iqra-item";
+    div.innerText = item.text;
+
+    div.onclick = () => playSequence(item.sounds, div);
+
+    list.appendChild(div);
+  });
+}
+
+function backMenu() {
+  menu.style.display = "block";
+  latihan.style.display = "none";
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/materialize.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var p = document.querySelectorAll('.parallax');
+  M.Parallax.init(p);
+});
+</script>
+
+</body>
+</html>

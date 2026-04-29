@@ -769,214 +769,77 @@ body.page-hijaiyah {
   transform: translateY(-2px);
   background: rgba(255,255,255,0.25);
 }
-/* ===================== */
-/* HALAMAN AL-QURAN ONLY */
-/* ===================== */
 
-.page-quran {
-  background: #5d9450; /* hijau adem */
-}
+/* CARD PER ITEM */
+.icon-block {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
 
-/* container list */
-.page-quran .ayat {
-  max-width: 800px;
-  margin: 40px auto;
-}
-
-/* card per surah */
-.page-quran .ayat li {
-  background: #f8f9f7;
-  border-radius: 12px;
-  padding: 15px 20px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   transition: 0.3s;
+
+  height: 100%;
 }
 
-/* hover efek */
-.page-quran .ayat li:hover {
-  transform: translateY(-3px);
-  background: #e6f0e6;
+/* HOVER EFFECT */
+.icon-block:hover {
+  transform: translateY(-8px);
 }
 
-/* nomor + nama */
-.page-quran .ayat li b {
-  color: #2d5a27;
-  font-size: 16px;
+/* ICON */
+.icon-block i {
+  font-size: 40px;
+  color: #5d9450;
+  margin-bottom: 10px;
 }
 
-/* arti & jumlah ayat */
-.page-quran .ayat li span {
-  color: #6c757d;
-  font-size: 13px;
-}
-.page-quran .ayat li::before {
-  content: "📖";
-  margin-right: 10px;
-}
-.page-quran .footer-copyright {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.page-quran .footer-copyright .container {
-  text-align: center;
-}
-.page-quran .footer-copyright .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  color: white;
-}
-.page-quran .footer-copyright .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px; /* jarak icon & teks */
-  color: white;
+/* TITLE */
+.icon-block h5 {
+  color: #2f5d50;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-/* paksa teks ga turun */
-.page-quran .footer-copyright span {
-  white-space: nowrap;
-}
-.page-quran .footer-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  color: white;
-}
-
-/* ICON LOVE */
-.page-quran .love-icon {
-  width: 16px;
-  height: 16px;
-  fill: red; /* INI PENTING BIAR KELIATAN */
-  display: block;
-}
-/* SUBTITLE QURAN */
-.page-quran .subtitle-quran {
-  display: inline-block;
-  padding: 10px 25px;
-  border-radius: 30px;
-
-  background: rgba(255, 255, 255, 0.15); /* transparan */
-  backdrop-filter: blur(6px); /* efek kaca */
-
-  color: white;
-  font-size: 16px;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.page-quran .subtitle-quran {
-  animation: fadeUp 0.8s ease;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* NAVBAR KHUSUS HALAMAN QURAN */
-.page-quran nav {
-  background: #21867a!important;
-  box-shadow: none;
-}
-
-/* biar full tanpa batas container keliatan */
-.page-quran .nav-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* logo lebih besar dikit */
-.page-quran .brand-logo img {
-  height: 60px;
-  margin-top: 5px;
-}
-/* NAVBAR HALAMAN SURAH */
-.page-surah nav {
-  background: #21867a !important;
-  box-shadow: none;
-}
-
-/* logo tengah */
-.page-surah .brand-logo img {
-  height: 60px;
-  margin-top: 5px;
-}
-
-/* tombol back */
-.page-surah .sidenav-trigger i {
-  color: white;
-  font-size: 28px;
-}
-
-/* rapihin posisi */
-.page-surah .nav-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* tombol back tetap di kanan */
-.page-surah .sidenav-trigger {
-  position: absolute;
-  right: 15px;
-}
-/* SUBTITLE HALAMAN SURAH */
-.page-surah .subtitle-surah {
-  display: inline-block;
-  padding: 10px 25px;
-  border-radius: 30px;
-
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(6px);
-
-  color: white;
-  font-size: 15px;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-/* HILANGIN PUTIH SAAT DIKLIK */
-.page-surah #list-ayah li:active,
-.page-surah #list-ayah li:focus {
-  background: rgba(255,255,255,0.08) !important;
-  outline: none;
-}
-.page-surah #list-ayah li {
-  transition: 0.3s;
-}
-
-/* hover */
-.page-surah #list-ayah li:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* klik */
-.page-surah #list-ayah li:active {
-  transform: scale(0.98);
-  background: rgba(255,255,255,0.08);
-}
-/* FOOTER SURAH */
-.page-surah .footer-copyright {
-  text-align: center;
-  color: white;
+/* TEXT */
+.icon-block p {
+  color: #666;
   font-size: 14px;
-  padding: 15px 0;
+}
+#service .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#service .col {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-copyright {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+footer.page-footer {
+  text-align: center;
+}
+
+footer.page-footer .footer-copyright {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  text-align: center !important;
+  padding-left: 0 !important; /* 🔥 INI KUNCINYA */
+}
+/* HIJAIYAH RTL (KANAN KE KIRI) */
+.page-hijaiyah .row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse; /* 🔥 INI KUNCINYA */
 }

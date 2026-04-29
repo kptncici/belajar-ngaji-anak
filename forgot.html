@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lupa Password</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+
+  /* 🔥 BACKGROUND SAMA KAYAK LOGIN */
+  background: 
+    linear-gradient(rgba(30, 90, 40, 0.75), rgba(30, 90, 40, 0.75)),
+    url('./img/bg-masjid.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 100vh;
+}
+
+/* CENTER WRAPPER */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* CONTAINER */
+.container {
+  width: 800px;
+  max-width: 95%;
+  height: 450px;
+  background: #1b5e20;
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* LEFT */
+.left {
+  width: 50%;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left img {
+  width: 160px;
+  margin-bottom: 15px;
+}
+
+.left h3 {
+  color: #2e7d32;
+}
+
+/* RIGHT */
+.right {
+  width: 50%;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h2 {
+  margin-bottom: 10px;
+}
+
+.right p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #c8e6c9;
+}
+
+.input input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  outline: none;
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background: #66bb6a;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  background: #4caf50;
+}
+
+/* LINK */
+.link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.link a {
+  color: #a5d6a7;
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left, .right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .left img {
+    width: 120px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <div class="container">
+
+    <!-- LEFT -->
+    <div class="left">
+      <img src="./img/logo-anak.png">
+      <h3>Belajar Ngaji</h3>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <h2>Lupa Password</h2>
+
+      <p>Masukkan email untuk reset password</p>
+
+      <div class="input">
+        <input id="email" type="email" placeholder="Email">
+      </div>
+
+      <button class="btn" onclick="resetPassword()">Kirim Link Reset</button>
+
+      <div class="link">
+        <a href="login.html">Kembali ke Login</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, sendPasswordResetEmail } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCs7f8OxIoGeRdbHdgzygPzd-XHqbwvyIw",
+  authDomain: "belajar-ngaji-4d8a6.firebaseapp.com",
+  projectId: "belajar-ngaji-4d8a6"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.resetPassword = function(){
+  const email = document.getElementById("email").value;
+
+  if(!email){
+    alert("Masukkan email dulu bro");
+    return;
+  }
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert("Link reset sudah dikirim ke email!");
+    })
+    .catch(err => alert(err.message));
+}
+</script>
+
+</body>
+</html>

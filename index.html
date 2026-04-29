@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link rel="shortcut icon" href="./img/logo-anak.png" type="image/x-icon">
+  <title>Belajar Ngaji</title>
+
+  <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+  <link href="css/materialize.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-wrapper container">
+    <a href="index.html" class="brand-logo">
+      <img src="./img/logo-anak.png">
+    </a>
+
+    <!-- 🔥 LOGOUT DI NAVBAR -->
+    <ul class="right">
+  <li id="user-name" style="margin-right:15px;"></li>
+  <li><a href="#" onclick="logout()">Logout</a></li>
+</ul>
+  </div>
+</nav>
+
+<div id="index-banner" class="parallax-container">
+  <div class="container center">
+    <br><br>
+    <h1>Belajar Ngaji</h1>
+    <h5>Ayo mulai belajar Al-Qur'an dari dasar</h5>
+    <br><br>
+  </div>
+  <div class="parallax">
+    <img src="./img/banner.png">
+  </div>
+</div>
+
+<div class="container center">
+  <div class="section">
+    <a href="huruf.html" class="btn btn-large waves-effect waves-light" style="margin:10px;">
+      Belajar Huruf
+    </a>
+
+    <a href="iqra.html" class="btn btn-large waves-effect waves-light" style="margin:10px;">
+      Iqra Interaktif
+    </a>
+  </div>
+</div>
+
+<div class="container center" id="service">
+  <div class="row">
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <i class="material-icons">volume_up</i>
+        <h5>Belajar dengan Suara</h5>
+        <p>Dengarkan pelafalan huruf hijaiyah dengan jelas dan mudah ditiru</p>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <i class="material-icons">group</i>
+        <h5>Ramah untuk Pemula</h5>
+        <p>Cocok digunakan oleh anak-anak maupun siapa saja yang baru mulai belajar mengaji</p>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <i class="material-icons">menu_book</i>
+        <h5>Belajar Menyenangkan</h5>
+        <p>Belajar ngaji jadi lebih seru dengan tampilan yang interaktif</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container" id="about">
+  <div class="about-box center">
+    <h4>Tentang Kami</h4>
+    <p>
+      Kami adalah tim mahasiswa yang membuat website ini untuk membantu siapa saja 
+      belajar membaca Al-Qur'an dengan cara yang mudah, interaktif, dan menyenangkan.
+    </p>
+  </div>
+</div>
+
+
+<footer class="page-footer center">
+  <div class="footer-copyright">
+    ❤️ © 2026 Tim Belajar Ngaji
+  </div>
+</footer>
+
+<!-- SCRIPT -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/materialize.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  M.Parallax.init(document.querySelectorAll('.parallax'));
+});
+</script>
+
+<!-- 🔥 FIREBASE MODERN -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCs7f8OxIoGeRdbHdgzygPzd-XHqbwvyIw",
+  authDomain: "belajar-ngaji-4d8a6.firebaseapp.com",
+  projectId: "belajar-ngaji-4d8a6"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// 🔒 PROTECT + TAMPILKAN USER
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "login.html";
+  } else {
+    // ambil email
+    let email = user.email;
+
+    // ambil nama depan dari email (biar lebih keren)
+    let nama = email.split("@")[0];
+
+    document.getElementById("user-name").innerHTML =
+      `Halo, ${nama} 👋`;
+  }
+});
+
+// 🔓 LOGOUT
+window.logout = function(){
+  signOut(auth).then(() => {
+    window.location.href = "login.html";
+  });
+}
+</script>
+
+</body>
+</html>
