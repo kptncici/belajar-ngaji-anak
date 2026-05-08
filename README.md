@@ -47,8 +47,6 @@ Belajar huruf hijaiyah dan iqra interaktif dengan audio.
 
 ---
 
----
-
 ## 👨‍💻 Author
 
 Made with NURFADILLA RHAMADANI
